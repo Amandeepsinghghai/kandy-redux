@@ -1,4 +1,4 @@
-import kandy from 'kandy';
+import kandy from 'kandy-js';
 import constants from './constants';
 import {loginSuccess, loginFailure} from './internalActions';
 
