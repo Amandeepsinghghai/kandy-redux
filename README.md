@@ -19,6 +19,10 @@ Module for providing a Redux interface to use Kandy.
  - Link your Kandy.js repo as stated in "How to use"
  - `npm install`
 
+## Running Tests
+
+ - `npm run test`
+
 ## Contributing
 
 It's important to pull and push changes regularly so that we don't fall out of sync. As of this writing, two projects will be using this package and will have to add features to it. That means we need to make sure to pay attention to what the other team is doing.
