@@ -15,5 +15,17 @@ export default {
         return {
             type: constants.LOGOUT
         };
+    },
+
+    makeCall(userName, cameraOn, callerId, options) {
+        return {
+            type: constants.MAKE_CALL,
+            payload: {
+                userName,
+                cameraOn,
+                callerId,
+                options
+            }
+        }
     }
 }

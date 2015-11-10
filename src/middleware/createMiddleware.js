@@ -21,9 +21,10 @@ export default function createMiddleware(apiKey) {
     // TODO: Add a warning if proper apiKey is not given
     const kandyHelper = createKandyHelper(apiKey);
 
-    // Set the interceptors
+    // Set the interceptors for actions the app would dispatch
     interceptors[constants.LOGIN_STARTED] = kandyHelper.core.loginStarted;
     interceptors[constants.LOGOUT] = kandyHelper.core.logout;
+    interceptors[constants.MAKE_CALL] = kandyHelper.call.makeCall;
 
     return middleware;
 }
