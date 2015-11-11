@@ -24,3 +24,10 @@ export function callInitiated(callId, remoteVideoState) {
         payload: { callId, remoteVideoState }
     };
 }
+
+export function callEnded(callId) {
+    return {
+        type: constants.CALL_ENDED,
+        payload: { callId }
+    }
+}
