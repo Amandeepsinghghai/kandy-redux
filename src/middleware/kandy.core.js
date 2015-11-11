@@ -1,29 +1,25 @@
 import kandy from 'kandy-js';
+import constants from '../constants';
 import {loginSuccess, loginFailure} from '../internalActions';
 
-var apiKey;
+export default function createCoreInterceptors({apiKey, dispatch}) {
+    return {
+        [constants.LOGIN_STARTED]: function(action) {
+            kandy.login(
+                apiKey,
+                action.payload.username,
+                action.payload.password,
+                function success() {
+                    dispatch(loginSuccess(action.payload.username));
+                },
+                function failure() {
+                    dispatch(loginFailure(action.payload.username));
+                }
+            );
+        },
 
-var core = {
-    loginStarted({dispatch, action}) {
-        kandy.login(
-            apiKey,
-            action.payload.username,
-            action.payload.password,
-            function success() {
-                dispatch(loginSuccess(action.payload.username));
-            },
-            function failure() {
-                dispatch(loginFailure(action.payload.username));
-            }
-        );
-    },
-
-    logout() {
-        kandy.logout();
-    }
-};
-
-export default function createCore(key) {
-    apiKey = key;
-    return core;
+        [constants.LOGOUT]: function() {
+            kandy.logout();
+        }
+    };
 }
