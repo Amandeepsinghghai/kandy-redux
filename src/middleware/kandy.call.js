@@ -17,6 +17,10 @@ export default function createCallInterceptors() {
                 action.payload.callerId,
                 {remoteVideoContainer, localVideoContainer}
             );
+        },
+
+        [constants.END_CALL]: function(action) {
+            kandy.call.endCall(action.payload.callId);
         }
     }
 };

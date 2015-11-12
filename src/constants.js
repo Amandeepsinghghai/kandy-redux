@@ -6,5 +6,6 @@ export default {
     LOGOUT: prefix + 'logout',
     MAKE_CALL: prefix + 'make-call',
     CALL_INITIATED: prefix + 'call-initiated',
+    END_CALL: prefix + 'end-call',
     CALL_ENDED: prefix + 'call-ended'
 };
