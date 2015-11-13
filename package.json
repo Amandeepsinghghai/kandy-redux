@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "flux-standard-action": "^0.6.0",
-    "merge": "^1.2.0"
+    "merge": "^1.2.0",
+    "redux-actions": "^0.8.0"
   },
   "devDependencies": {
     "babel-core": "^5.1.11",
