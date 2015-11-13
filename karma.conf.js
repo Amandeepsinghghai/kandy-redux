@@ -1,7 +1,7 @@
 module.exports = function (config) {
   config.set({
     browsers: [ 'PhantomJS' ], //run in Chrome
-    frameworks: [ 'mocha', 'sinon-chai'], //use the mocha test framework
+    frameworks: [ 'mocha', 'sinon-chai', 'es6-shim'], //use the mocha test framework
     junitReporter: {
         outputDir: process.env.CIRCLE_TEST_REPORTS || './'
     },

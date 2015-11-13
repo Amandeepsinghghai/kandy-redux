@@ -1,5 +1,4 @@
 import kandy from 'kandy-js';
-import merge from 'merge';
 import {callInitiated, callEnded} from '../internalActions';
 import createCoreInterceptors from './kandy.core';
 import createCallInterceptors from './kandy.call';
@@ -21,7 +20,7 @@ export default function createKandyInterceptors({apiKey, dispatch, getState}) {
 
     // We return one object whose keys are action types and values
     // are interceptor functions for those actions.
-    return merge(
+    return Object.assign({},
         createCoreInterceptors({apiKey, dispatch, getState}),
         createCallInterceptors({apiKey, dispatch, getState})
     );
