@@ -1,10 +1,10 @@
 import {login} from '../src/actions';
-import kandyCreateMiddleware from '../src/middleware';
+import kandyCreateMiddleware from '../src/middleware/createMiddleware';
 import * as constants from '../src/constants';
 import kandy from 'kandy-js';
 import _ from 'lodash';
 
-describe('kandy-redux', function() {
+describe('middleware', function() {
     const username = 'username';
     const password = 'password';
     const apiKey = 'apikey';
