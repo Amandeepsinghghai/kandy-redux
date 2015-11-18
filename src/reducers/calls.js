@@ -3,7 +3,23 @@ import constants from '../constants';
 
 const reducers = {};
 reducers[constants.CALL_INITIATED] = (state, action) => {
-    state.push(action.payload)
+    const call = {
+        callId: action.payload.callId,
+        remoteVideoState: action.payload.remoteVideoState,
+        status: 'initiated'
+    };
+    state.push(call);
+    return state;
+};
+
+reducers[constants.CALL_ESTABLISHED] = (state, action) => {
+    const call = state.find(function(call) {
+        return call.callId === action.payload.callId;
+    });
+
+    call.status = 'established';
+    call.remoteVideoState = action.payload.remoteVideoState;
+
     return state;
 };
 

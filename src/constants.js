@@ -7,5 +7,6 @@ export default {
     MAKE_CALL: prefix + 'make-call',
     CALL_INITIATED: prefix + 'call-initiated',
     END_CALL: prefix + 'end-call',
-    CALL_ENDED: prefix + 'call-ended'
+    CALL_ENDED: prefix + 'call-ended',
+    CALL_ESTABLISHED: prefix + 'call-established'
 };

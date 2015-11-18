@@ -25,6 +25,13 @@ export function callInitiated(callId, remoteVideoState) {
     };
 }
 
+export function callEstablished(callId, remoteVideoState) {
+    return {
+        type: constants.CALL_ESTABLISHED,
+        payload: { callId, remoteVideoState }
+    };
+}
+
 export function callEnded(callId) {
     return {
         type: constants.CALL_ENDED,

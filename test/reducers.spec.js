@@ -14,10 +14,11 @@ describe('reducers', function() {
     it('call reducer to add call to state', function() {
         const call = {callId: 'foo'};
         const action = {type: constants.CALL_INITIATED, payload: call};
-        const expectation = [call];
         const state = callsReducer([], action);
 
-        expect(state).to.deep.equal(expectation);
+        expect(state.length).to.equal(1);
+        expect(state[0].callId).to.equal(call.callId);
+        expect(state[0].status).to.equal('initiated');
     });
 
     it('call reducer to remove call from state', function() {
