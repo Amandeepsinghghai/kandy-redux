@@ -39,7 +39,7 @@ describe('reducers', function() {
 
     it('auth reducer to set logged in state', function() {
         const username = 'foo';
-        const action = {type: constants.LOGIN_FINISHED, payload: {username}};
+        const action = {type: constants.LOGIN_FINISH, payload: {username}};
         const expectation = {currentUsername: username, isAuthenticated: true};
         const state = authReducer({}, action);
 

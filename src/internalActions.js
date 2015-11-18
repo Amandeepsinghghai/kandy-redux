@@ -3,7 +3,7 @@ import constants from './constants';
 // These actions should not be dispatched outside of kandy-redux
 export function loginSuccess(username) {
     return {
-        type: constants.LOGIN_FINISHED,
+        type: constants.LOGIN_FINISH,
         payload: {
             username
         }
@@ -12,7 +12,7 @@ export function loginSuccess(username) {
 
 export function loginFailure(username) {
     return {
-        type: constants.LOGIN_FINISHED,
+        type: constants.LOGIN_FINISH,
         payload: new Error(username + ' was not logged in due to an error.'),
         error: true
     };
