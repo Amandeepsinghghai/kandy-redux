@@ -6,54 +6,72 @@ import {makeCall} from '../src/actions';
 describe('reducers', function() {
     it('call reducer default state to be returned', function() {
         const expectation = [];
-        const state = callsReducer(undefined, {});
+        const state = undefined;
+        const newState = callsReducer(state, {});
 
-        expect(state).to.deep.equal(expectation);
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 
     it('call reducer to add call to state', function() {
         const call = {callId: 'foo'};
         const action = {type: constants.CALL_INITIATED, payload: call};
-        const state = callsReducer([], action);
+        const state = [];
+        const newState = callsReducer(state, action);
 
-        expect(state.length).to.equal(1);
-        expect(state[0].callId).to.equal(call.callId);
-        expect(state[0].status).to.equal('initiated');
+        expect(newState.length).to.equal(1);
+        expect(newState[0].callId).to.equal(call.callId);
+        expect(newState[0].status).to.equal('initiated');
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 
     it('call reducer to remove call from state', function() {
         const call = {callId: 'foo'};
         const action = {type: constants.CALL_ENDED, payload: call};
         const expectation = [];
-        const state = callsReducer([call], action);
+        const state = [call];
+        const newState = callsReducer(state, action);
 
-        expect(state).to.deep.equal(expectation);
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 
     it('auth reducer default state to be returned', function() {
         const expectation = {};
-        const state = authReducer(undefined, {});
+        const state = undefined;
+        const newState = authReducer(state, {});
 
-        expect(state).to.deep.equal(expectation);
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 
     it('auth reducer to set logged in state', function() {
         const username = 'foo';
         const action = {type: constants.LOGIN_FINISH, payload: {username}};
         const expectation = {currentUsername: username, isAuthenticated: true};
-        const state = authReducer({}, action);
+        const state = {};
+        const newState = authReducer(state, action);
 
-        expect(state.currentUsername).to.equal(expectation.currentUsername);
-        expect(state.isAuthenticated).to.equal(expectation.isAuthenticated);
+        expect(newState.currentUsername).to.equal(expectation.currentUsername);
+        expect(newState.isAuthenticated).to.equal(expectation.isAuthenticated);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 
     it('auth reducer to set logged in state', function() {
         const username = 'foo';
         const action = {type: constants.LOGOUT, payload: {username}};
         const expectation = {currentUsername: '', isAuthenticated: false};
-        const state = authReducer({}, action);
+        const state = {};
+        const newState = authReducer(state, action);
 
-        expect(state.currentUsername).to.equal(expectation.currentUsername);
-        expect(state.isAuthenticated).to.equal(expectation.isAuthenticated);
+        expect(newState.currentUsername).to.equal(expectation.currentUsername);
+        expect(newState.isAuthenticated).to.equal(expectation.isAuthenticated);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
     });
 });
