@@ -3,7 +3,7 @@ import constants from './constants';
 export default {
     login(username, password) {
         return {
-            type: constants.LOGIN_STARTED,
+            type: constants.LOGIN,
             payload: { username, password }
         };
     },

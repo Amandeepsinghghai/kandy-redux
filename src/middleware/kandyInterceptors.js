@@ -1,11 +1,14 @@
 import kandy from 'kandy-js';
-import {callInitiated, callEnded} from '../internalActions';
+import {callInitiated, callEnded, callEstablished} from '../internalActions';
 import createCoreInterceptors from './kandy.core';
 import createCallInterceptors from './kandy.call';
 
 function setListeners(dispatch) {
     kandy.on('callinitiated', (call) => {
         dispatch(callInitiated(call.getId(), call.getRemoteVideoState()));
+    });
+    kandy.on('callestablished', (call) => {
+        dispatch(callEstablished(call.getId(), call.getRemoteVideoState()));
     });
     kandy.on('callended', (call) => {
         dispatch(callEnded(call.getId()));

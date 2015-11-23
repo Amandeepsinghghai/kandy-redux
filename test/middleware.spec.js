@@ -52,7 +52,7 @@ describe('middleware', function() {
 
         // Make sure login success was dispatched
         expect(dispatch).to.be.calledWithMatch({
-            type: constants.LOGIN_FINISHED,
+            type: constants.LOGIN_FINISH,
             error: undefined
         });
     });
@@ -66,7 +66,7 @@ describe('middleware', function() {
 
         // Make sure login failure was dispatched
         expect(dispatch).to.be.calledWithMatch({
-            type: constants.LOGIN_FINISHED,
+            type: constants.LOGIN_FINISH,
             error: true
         });
     });

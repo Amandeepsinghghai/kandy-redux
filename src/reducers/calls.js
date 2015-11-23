@@ -2,9 +2,29 @@ import {handleActions} from 'redux-actions';
 import constants from '../constants';
 
 const reducers = {};
+
+/*
+ * This reducer maintains an array of call objects for each active call
+ */
 reducers[constants.CALL_INITIATED] = (state, action) => {
-    state.push(action.payload)
-    return state;
+    return state.concat({
+        callId: action.payload.callId,
+        remoteVideoState: action.payload.remoteVideoState,
+        status: 'initiated'
+    });
+};
+
+reducers[constants.CALL_ESTABLISHED] = (state, action) => {
+    return state.map((call) => {
+        // Don't change other calls
+        if (call.callId !== action.payload.callId) {
+            return call
+        }
+
+        call.status = 'established';
+        call.remoteVideoState = action.payload.remoteVideoState;
+        return call
+    });
 };
 
 reducers[constants.CALL_ENDED] = (state, action) => {

@@ -4,7 +4,7 @@ import {loginSuccess, loginFailure} from '../internalActions';
 
 export default function createCoreInterceptors({apiKey, dispatch}) {
     return {
-        [constants.LOGIN_STARTED]: function(action) {
+        [constants.LOGIN]: function(action) {
             kandy.login(
                 apiKey,
                 action.payload.username,
