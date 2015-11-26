@@ -1,5 +1,5 @@
 import kandy from 'kandy-js';
-import {callInitiated, callEnded, callEstablished} from '../internalActions';
+import {callInitiated, callEnded, callEstablished, mediaError} from '../internalActions';
 import createCoreInterceptors from './kandy.core';
 import createCallInterceptors from './kandy.call';
 
@@ -12,6 +12,9 @@ function setListeners(dispatch) {
     });
     kandy.on('callended', (call) => {
         dispatch(callEnded(call.getId()));
+    });
+    kandy.on('media', (error) => {
+        dispatch(mediaError(error));
     });
 }
 

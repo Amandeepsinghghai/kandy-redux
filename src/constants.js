@@ -8,5 +8,8 @@ export default {
     CALL_INITIATED: prefix + 'call-initiated',
     END_CALL: prefix + 'end-call',
     CALL_ENDED: prefix + 'call-ended',
-    CALL_ESTABLISHED: prefix + 'call-established'
+    CALL_ESTABLISHED: prefix + 'call-established',
+    INIT_MEDIA: prefix + 'init-media',
+    INIT_MEDIA_FINISH: prefix + 'init-media-finish',
+    MEDIA_ERROR: prefix + 'media-error'
 };

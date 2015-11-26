@@ -26,5 +26,12 @@ export default {
             type: constants.END_CALL,
             payload: { callId }
         };
+    },
+
+    initMedia(force, options) {
+        return {
+            type: constants.INIT_MEDIA,
+            payload: { force, options }
+        };
     }
 }
