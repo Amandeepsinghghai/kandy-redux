@@ -15,9 +15,9 @@ reducers[constants.MEDIA_ERROR] = (state, action) => {
         error: {
             type: action.payload.type,
             urls: {
-                action.payload.urlWin32bit,
-                action.payload.urlWin64bit,
-                action.payload.urlMacUnix
+                win32bit: action.payload.urlWin32bit,
+                win64bit: action.payload.urlWin64bit,
+                macUnix: action.payload.urlMacUnix
             }
         }
     };

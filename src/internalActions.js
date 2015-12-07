@@ -42,14 +42,14 @@ export function callEnded(callId) {
 export function mediaSuccess() {
     return {
         type: constants.INIT_MEDIA_FINISH,
-        payload: { 'success' }
+        payload: 'success'
     };
 }
 
 // TODO: This probably isn't needed.
 export function mediaFailure(errorCode) {
     return {
-        type.constants.INIT_MEDIA_FINISH,
+        type: constants.INIT_MEDIA_FINISH,
         // TODO: Have payload be an error like loginFailure?
         payload: { errorCode }
     };
