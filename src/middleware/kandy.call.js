@@ -2,7 +2,7 @@ import kandy from 'kandy-js';
 import constants from '../constants';
 import {loginSuccess, loginFailure, mediaSuccess, mediaFailure} from '../internalActions';
 
-export default function createCallInterceptors() {
+export default function createCallInterceptors({apiKey, dispatch}) {
     return {
         [constants.MAKE_CALL]: function(action) {
             const options = action.payload.options || {};
@@ -32,8 +32,12 @@ export default function createCallInterceptors() {
                     dispatch(mediaSuccess());
                 },
                 function failure(errorCode) {
-                    //dispatch(mediaFailure(errorCode));
-                    // TODO: See how unnecessary this is.
+                    /**
+                     * Don't meed to dispatch mediaFailure,
+                     * since the mediaError event will
+                     * handle the failure.
+                     */
+                    // dispatch(mediaFailure(errorCode));
                 },
                 action.payload.force,
                 action.payload.options

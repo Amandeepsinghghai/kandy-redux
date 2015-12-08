@@ -1,3 +1,4 @@
+import kandy from 'kandy-js';
 const prefix = '@@kandy-redux/';
 
 export default {
@@ -13,3 +14,5 @@ export default {
     INIT_MEDIA_FINISH: prefix + 'init-media-finish',
     MEDIA_ERROR: prefix + 'media-error'
 };
+
+export const mediaErrors = kandy.call.mediaErrors;

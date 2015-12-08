@@ -1,23 +1,29 @@
 import {handleActions} from 'redux-actions';
-import constants from '../constants';
+import constants, { mediaErrors } from '../constants';
 
 const reducers = {};
 
 reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
-    return {
-        support: '11' // TODO: Temporary.
-    };
+    return action.payload;
 };
 
 reducers[constants.MEDIA_ERROR] = (state, action) => {
+
+    var canCall = false;
+    if(action.payload.error.type === mediaErrors.NO_SCREENSHARING_WARNING) {
+        // This case is just a warning. Calls work; screenshare doesn't.
+        canCall = true;
+    }
+
     return {
-        support: '00', // TODO: Temporary.
+        callSupport: canCall,
+        screenshareSupport: false,
         error: {
-            type: action.payload.type,
+            type: action.payload.error.type,
             urls: {
-                win32bit: action.payload.urlWin32bit,
-                win64bit: action.payload.urlWin64bit,
-                macUnix: action.payload.urlMacUnix
+                win32bit: action.payload.error.urlWin32bit,
+                win64bit: action.payload.error.urlWin64bit,
+                macUnix: action.payload.error.urlMacUnix
             }
         }
     };

@@ -42,7 +42,10 @@ export function callEnded(callId) {
 export function mediaSuccess() {
     return {
         type: constants.INIT_MEDIA_FINISH,
-        payload: 'success'
+        payload: {
+            callSupport: true,
+            screenshareSupport: true
+        }
     };
 }
 
