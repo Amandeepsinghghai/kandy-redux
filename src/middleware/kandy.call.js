@@ -33,11 +33,10 @@ export default function createCallInterceptors({apiKey, dispatch}) {
                 },
                 function failure(errorCode) {
                     /**
-                     * Don't meed to dispatch mediaFailure,
+                     * Don't meed to do anything,
                      * since the mediaError event will
                      * handle the failure.
                      */
-                    // dispatch(mediaFailure(errorCode));
                 },
                 action.payload.force,
                 action.payload.options

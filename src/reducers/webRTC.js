@@ -1,12 +1,33 @@
 import {handleActions} from 'redux-actions';
 import constants, { mediaErrors } from '../constants';
 
+/**
+ * webRTC reducers.
+ * Handles actions related to media/webRTC support.
+ */
 const reducers = {};
 
+/**
+ * INIT_MEDIA_FINISH
+ * Handles the callbacks for initMedia.
+ */
 reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
-    return action.payload;
+
+    if(action.error) {
+        return action.payload;
+    } else {
+        // No error means we have full support.
+        return {
+            callSupport: true,
+            screenshareSupport: true
+        };
+    }
 };
 
+/**
+ * MEDIA_ERROR
+ * Handles the media [error] event.
+ */
 reducers[constants.MEDIA_ERROR] = (state, action) => {
 
     var canCall = false;

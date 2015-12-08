@@ -39,25 +39,29 @@ export function callEnded(callId) {
     }
 }
 
+/**
+ * Action for initMedia's success callback.
+ */
 export function mediaSuccess() {
     return {
         type: constants.INIT_MEDIA_FINISH,
-        payload: {
-            callSupport: true,
-            screenshareSupport: true
-        }
     };
 }
 
-// TODO: This probably isn't needed.
+/**
+ * Action for initMedia's failure callback.
+ */
 export function mediaFailure(errorCode) {
     return {
         type: constants.INIT_MEDIA_FINISH,
-        // TODO: Have payload be an error like loginFailure?
-        payload: { errorCode }
+        payload: new Error('Encountered webRTC support error. Code: ' + errorCode),
+        error: true
     };
 }
 
+/**
+ * Action for the media [error] event.
+ */
 export function mediaError(error) {
     return {
         type: constants.MEDIA_ERROR,
