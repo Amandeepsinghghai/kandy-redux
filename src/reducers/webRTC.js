@@ -8,13 +8,31 @@ import constants, { mediaErrors } from '../constants';
 const reducers = {};
 
 /**
+ * screenshareWarning
+ * This is a workaround for Kandy's NO_SCREENSHARING_WARNING scenario.
+ * In this scenario, the media [error] event is triggered first,
+ * then the success callback is called. Meaning the MEDIA_ERROR
+ * reducer acts, then the INIT_MEDIA_FINISH reducer acts,
+ * overwriting what MEDIA_ERROR just did. So if the
+ * NO_SCREENSHARING_WARNING scenario occured for MEDIA_ERROR,
+ * we need INIT_MEDIA_FINISH to return the same state that
+ * MEDIA_ERROR is suppose to return.
+ */
+var screenshareWarning = false;
+
+/**
  * INIT_MEDIA_FINISH
  * Handles the callbacks for initMedia.
  */
 reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
 
-    if(action.error) {
-        return action.payload;
+    if(screenshareWarning) {
+        // This case is a hack. See the comment above.
+        screenshareWarning = false;
+        return {
+            callSupport: true,
+            screenshareSupport: false
+        };
     } else {
         // No error means we have full support.
         return {
@@ -34,6 +52,8 @@ reducers[constants.MEDIA_ERROR] = (state, action) => {
     if(action.payload.error.type === mediaErrors.NO_SCREENSHARING_WARNING) {
         // This case is just a warning. Calls work; screenshare doesn't.
         canCall = true;
+        // This is a hack. See the comment above.
+        screenshareWarning = true;
     }
 
     var error = {
