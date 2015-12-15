@@ -36,17 +36,23 @@ reducers[constants.MEDIA_ERROR] = (state, action) => {
         canCall = true;
     }
 
+    var error = {
+        type: action.payload.error.type
+    };
+    // Include the urls if they are part of the error.
+    // If one of the urls are present, then they all are.
+    if("urlWin32bit" in action.payload.error) {
+        error.urls = {
+            win32bit: action.payload.error.urlWin32bit,
+            win64bit: action.payload.error.urlWin64bit,
+            macUnix: action.payload.error.urlMacUnix
+        };
+    }
+
     return {
         callSupport: canCall,
         screenshareSupport: false,
-        error: {
-            type: action.payload.error.type,
-            urls: {
-                win32bit: action.payload.error.urlWin32bit,
-                win64bit: action.payload.error.urlWin64bit,
-                macUnix: action.payload.error.urlMacUnix
-            }
-        }
+        error
     };
 };
 
