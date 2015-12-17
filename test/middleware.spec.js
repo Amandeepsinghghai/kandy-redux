@@ -1,6 +1,6 @@
 import {login} from '../src/actions';
 import kandyCreateMiddleware from '../src/middleware/createMiddleware';
-import * as constants from '../src/constants';
+import constants from '../src/constants';
 import kandy from 'kandy-js';
 import _ from 'lodash';
 
