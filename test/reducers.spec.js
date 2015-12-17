@@ -186,7 +186,10 @@ describe('reducers', function() {
 
             const expectation = {
                 callSupport: true,
-                screenshareSupport: false
+                screenshareSupport: false,
+                error: {
+                    type: mediaErrors.NO_SCREENSHARING_WARNING
+                }
             };
 
             expect(newestState).to.deep.equal(expectation);

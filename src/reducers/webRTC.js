@@ -31,7 +31,10 @@ reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
         screenshareWarning = false;
         return {
             callSupport: true,
-            screenshareSupport: false
+            screenshareSupport: false,
+            error: {
+                type: mediaErrors.NO_SCREENSHARING_WARNING
+            }
         };
     } else {
         // No error means we have full support.
