@@ -38,3 +38,33 @@ export function callEnded(callId) {
         payload: { callId }
     }
 }
+
+/**
+ * Action for initMedia's success callback.
+ */
+export function mediaSuccess() {
+    return {
+        type: constants.INIT_MEDIA_FINISH,
+    };
+}
+
+/**
+ * Action for initMedia's failure callback.
+ */
+export function mediaFailure(errorCode) {
+    return {
+        type: constants.INIT_MEDIA_FINISH,
+        payload: new Error('Encountered webRTC support error. Code: ' + errorCode),
+        error: true
+    };
+}
+
+/**
+ * Action for the media [error] event.
+ */
+export function mediaError(error) {
+    return {
+        type: constants.MEDIA_ERROR,
+        payload: { error }
+    };
+}
