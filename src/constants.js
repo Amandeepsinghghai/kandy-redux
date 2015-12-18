@@ -15,4 +15,10 @@ export default {
     MEDIA_ERROR: prefix + 'media-error'
 };
 
+/**
+ * mediaErrors
+ * Use Kandy's constants for the media [error] event.
+ * Export as a separate, named export since they are
+ * only used for a particular scenario.
+ */
 export const mediaErrors = kandy.call.mediaErrors;

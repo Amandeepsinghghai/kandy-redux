@@ -30,6 +30,7 @@ reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
         // This case is a hack. See the comment above.
         screenshareWarning = false;
         return {
+            initialized: true,
             callSupport: true,
             screenshareSupport: false,
             error: {
@@ -39,6 +40,7 @@ reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
     } else {
         // No error means we have full support.
         return {
+            initialized: true,
             callSupport: true,
             screenshareSupport: true
         };
@@ -73,6 +75,7 @@ reducers[constants.MEDIA_ERROR] = (state, action) => {
     }
 
     return {
+        initialized: true,
         callSupport: canCall,
         screenshareSupport: false,
         error
