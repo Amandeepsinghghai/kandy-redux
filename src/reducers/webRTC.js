@@ -7,6 +7,11 @@ import constants, { mediaErrors } from '../constants';
  */
 const reducers = {};
 
+// Default state for webRTC reducers.
+const defaultState = {
+    initialized: false
+};
+
 /**
  * screenshareWarning
  * This is a workaround for Kandy's NO_SCREENSHARING_WARNING scenario.
@@ -82,9 +87,11 @@ reducers[constants.MEDIA_ERROR] = (state, action) => {
     };
 };
 
+
+
 // This creates a reducer function made up of many reducers.
 // The key is the action type for each reducer. The `next`
 // function is for successful actions and `throw` is for
 // error actions. When a value is a function instead of
 // an object, the same function is used for success and failure
-export default handleActions(reducers, {});
+export default handleActions(reducers, defaultState);

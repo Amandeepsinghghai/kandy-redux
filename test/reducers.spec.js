@@ -83,7 +83,10 @@ describe('reducers', function() {
             const action = {};
             const newState = webRTCReducer(state, action);
 
-            const expectation = {};
+            var expectation = {
+                initialized: false
+            };
+
             expect(newState).to.deep.equal(expectation);
             // Check that state is not mutated.
             expect(newState).not.to.equal(state);
@@ -97,6 +100,7 @@ describe('reducers', function() {
             const newState = webRTCReducer(state, action);
 
             const expectation = {
+                initialized: true,
                 callSupport: true,
                 screenshareSupport: true
             };
@@ -118,6 +122,7 @@ describe('reducers', function() {
             const newState = webRTCReducer(state, action);
 
             const expectation = {
+                initialized: true,
                 callSupport: false,
                 screenshareSupport: false,
                 error: {
@@ -150,6 +155,7 @@ describe('reducers', function() {
             const newState = webRTCReducer(state, action);
 
             const expectation = {
+                initialized: true,
                 callSupport: false,
                 screenshareSupport: false,
                 error: {
@@ -185,6 +191,7 @@ describe('reducers', function() {
             const newestState = webRTCReducer(newState, successAction);
 
             const expectation = {
+                initialized: true,
                 callSupport: true,
                 screenshareSupport: false,
                 error: {
