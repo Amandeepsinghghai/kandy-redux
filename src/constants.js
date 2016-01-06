@@ -3,6 +3,7 @@ const prefix = '@@kandy-redux/';
 
 export default {
     LOGIN: prefix + 'login',
+    LOGIN_SSO: prefix + 'login-sso',
     LOGIN_FINISH: prefix + 'login-finish',
     LOGOUT: prefix + 'logout',
     MAKE_CALL: prefix + 'make-call',

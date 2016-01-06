@@ -8,6 +8,13 @@ export default {
         };
     },
 
+    loginSSO(userAccessToken) {
+        return {
+            type: constants.LOGIN_SSO,
+            payload: { userAccessToken }
+        };
+    },
+
     logout() {
         return {
             type: constants.LOGOUT

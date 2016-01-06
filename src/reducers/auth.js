@@ -4,7 +4,8 @@ import constants from '../constants';
 const reducers = {};
 reducers[constants.LOGIN_FINISH] = (state, action) => ({
     currentUsername: action.payload.username,
-    isAuthenticated: true
+    isAuthenticated: true,
+    isAnonymous: action.payload.isAnonymous
 });
 
 reducers[constants.LOGOUT] = () => ({
