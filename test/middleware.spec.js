@@ -22,7 +22,7 @@ describe('middleware', function() {
         const mockLogin = sinon.mock(kandy).expects('login');
         // Set expectations for how login should be called.
         mockLogin.once(); // Once per test.
-        mockLogin.withArgs(sinon.match.string); // With a string.
+        mockLogin.withArgs(sinon.match.string, sinon.match.string); // With two strings.
 
         // Verify the expectations, then reset everything after each test.
         afterEach(function() {
@@ -66,7 +66,7 @@ describe('middleware', function() {
             const loginAction = login(username, password);
             kandyMiddleware({dispatch})(next)(loginAction);
 
-            // fake a successful kandy login
+            // fake a failed kandy login
             mockLogin.callArg(4);
 
             // Make sure login failure was dispatched
@@ -134,7 +134,7 @@ describe('middleware', function() {
             const loginAction = loginSSO(userAccessToken);
             kandyMiddleware({dispatch})(next)(loginAction);
 
-            // fake a successful kandy loginSSO
+            // fake a failed kandy loginSSO
             mockLoginSSO.callArg(2);
 
             // Make sure login failure was dispatched

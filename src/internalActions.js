@@ -12,9 +12,16 @@ export function loginSuccess(username, isAnonymous = false) {
 }
 
 export function loginFailure(username) {
+    var errorMsg;
+    if(username) {
+        errorMsg = username + ' was not logged in due to an error.';
+    } else {
+        errorMsg = 'Could not log in due to an error.';
+    }
+
     return {
         type: constants.LOGIN_FINISH,
-        payload: new Error('Could not log in due to an error.'),
+        payload: new Error(errorMsg),
         error: true
     };
 }
