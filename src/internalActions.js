@@ -39,6 +39,20 @@ export function callEnded(callId) {
     }
 }
 
+export function holdCall(callId) {
+    return {
+        type: constants.HOLD_CALL,
+        payload: { callId }
+    }
+}
+
+export function unholdCall(callId) {
+    return {
+        type: constants.UNHOLD_CALL,
+        payload: { callId }
+    }
+}
+
 /**
  * Action for initMedia's success callback.
  */

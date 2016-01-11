@@ -23,6 +23,14 @@ export default function createCallInterceptors({apiKey, dispatch}) {
             kandy.call.endCall(action.payload.callId);
         },
 
+        [constants.HOLD_CALL]: function(action) {
+            kandy.call.holdCall(action.payload.callId);
+        },
+
+        [constants.UNHOLD_CALL]: function(action) {
+            kandy.call.unHoldCall(action.payload.callId);
+        },
+
         /**
          * Interceptor for Kandy's initMedia function.
          */

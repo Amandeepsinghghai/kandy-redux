@@ -28,6 +28,20 @@ export default {
         };
     },
 
+    holdCall(callId) {
+        return {
+            type: constants.HOLD_CALL,
+            payload: { callId }
+        }
+    },
+
+    unholdCall(callId) {
+        return {
+            type: constants.UNHOLD_CALL,
+            payload: { callId }
+        }
+    },
+
     initMedia(force, options) {
         return {
             type: constants.INIT_MEDIA,
