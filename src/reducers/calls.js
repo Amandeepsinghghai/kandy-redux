@@ -35,16 +35,50 @@ reducers[constants.CALL_ENDED] = (state, action) => {
 };
 
 reducers[constants.HOLD_CALL] = (state, action) => {
-    // filter out the call that was ended
-    return state.filter((call) => {
-        return call.callId !== action.payload.callId;
+    return state.map((call) => {
+        // Don't change other calls
+        if (call.callId !== action.payload.callId) {
+            return call
+        }
+
+        call.hold = true;
+        return call
     });
 };
 
 reducers[constants.UNHOLD_CALL] = (state, action) => {
-    // filter out the call that was ended
-    return state.filter((call) => {
-        return call.callId !== action.payload.callId;
+    return state.map((call) => {
+        // Don't change other calls
+        if (call.callId !== action.payload.callId) {
+            return call
+        }
+
+        call.hold = false;
+        return call
+    });
+};
+
+reducers[constants.MUTE_CALL] = (state, action) => {
+    return state.map((call) => {
+        // Don't change other calls
+        if (call.callId !== action.payload.callId) {
+            return call
+        }
+
+        call.mute = true;
+        return call
+    });
+};
+
+reducers[constants.UNMUTE_CALL] = (state, action) => {
+    return state.map((call) => {
+        // Don't change other calls
+        if (call.callId !== action.payload.callId) {
+            return call
+        }
+
+        call.mute = false;
+        return call
     });
 };
 

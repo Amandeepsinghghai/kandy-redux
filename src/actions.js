@@ -42,6 +42,20 @@ export default {
         }
     },
 
+    muteCall(callId) {
+        return {
+            type: constants.MUTE_CALL,
+            payload: { callId }
+        }
+    },
+
+    unmuteCall(callId) {
+        return {
+            type: constants.UNMUTE_CALL,
+            payload: { callId }
+        }
+    },
+
     initMedia(force, options) {
         return {
             type: constants.INIT_MEDIA,

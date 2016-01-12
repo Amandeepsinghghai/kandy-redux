@@ -31,6 +31,14 @@ export default function createCallInterceptors({apiKey, dispatch}) {
             kandy.call.unHoldCall(action.payload.callId);
         },
 
+        [constants.MUTE_CALL]: function(action) {
+            kandy.call.muteCall(action.payload.callId);
+        },
+
+        [constants.UNMUTE_CALL]: function(action) {
+            kandy.call.unMuteCall(action.payload.callId);
+        },
+
         /**
          * Interceptor for Kandy's initMedia function.
          */
