@@ -41,7 +41,7 @@ reducers[constants.HOLD_CALL] = (state, action) => {
             return call
         }
 
-        call.hold = true;
+        call.onHold = true;
         return call
     });
 };
@@ -53,7 +53,7 @@ reducers[constants.UNHOLD_CALL] = (state, action) => {
             return call
         }
 
-        call.hold = false;
+        call.onHold = false;
         return call
     });
 };
@@ -65,7 +65,7 @@ reducers[constants.MUTE_CALL] = (state, action) => {
             return call
         }
 
-        call.mute = true;
+        call.muted = true;
         return call
     });
 };
@@ -77,7 +77,7 @@ reducers[constants.UNMUTE_CALL] = (state, action) => {
             return call
         }
 
-        call.mute = false;
+        call.muted = false;
         return call
     });
 };
