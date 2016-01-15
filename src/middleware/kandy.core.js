@@ -29,7 +29,7 @@ export default function createCoreInterceptors({apiKey, dispatch}) {
             kandy.loginSSO(
                 action.payload.userAccessToken,
                 function success(result) {
-                    dispatch(loginSuccess(result.user_id, isAnonymous));
+                    dispatch(loginSuccess(result.user_id, result.full_user_id, isAnonymous));
                 },
                 function failure() {
                     dispatch(loginFailure());

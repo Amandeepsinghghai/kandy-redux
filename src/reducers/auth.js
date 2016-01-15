@@ -14,6 +14,7 @@ reducers[constants.LOGIN_FINISH] = {
     next(state, action) {
         return {
             currentUsername: action.payload.username,
+            fullUserId: action.payload.fullUserId,
             isAuthenticated: true,
             isAnonymous: action.payload.isAnonymous
         };

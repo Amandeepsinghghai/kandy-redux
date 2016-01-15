@@ -1,11 +1,12 @@
 import constants from './constants';
 
 // These actions should not be dispatched outside of kandy-redux
-export function loginSuccess(username, isAnonymous = false) {
+export function loginSuccess(username, fullUserId = '', isAnonymous = false) {
     return {
         type: constants.LOGIN_FINISH,
         payload: {
             username,
+            fullUserId,
             isAnonymous
         }
     };
