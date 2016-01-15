@@ -22,7 +22,7 @@ export default function createCoreInterceptors({apiKey, dispatch}) {
 
             // Check whether the SSO user is anonymous.
             var isAnonymous = false;
-            if(action.payload.userAccessToken.indexOf('AUAT') === 0) {
+            if(action.payload.userAccessToken.startsWith('AUAT')) {
                 isAnonymous = true;
             }
 
