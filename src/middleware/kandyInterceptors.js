@@ -1,9 +1,13 @@
 import kandy from 'kandy-js';
-import {callInitiated, callEnded, callEstablished, mediaError} from '../internalActions';
-import createCoreInterceptors from './kandy.core';
 import createCallInterceptors from './kandy.call';
+import createChatInterceptors from './kandy.chatMessages';
+import createCoreInterceptors from './kandy.core';
+import {messageReceived, callInitiated, callEnded, callEstablished, mediaError} from '../internalActions';
 
 function setListeners(dispatch) {
+    kandy.on('message', (message) => {
+        dispatch(messageReceived(message));
+    });
     kandy.on('callinitiated', (call) => {
         dispatch(callInitiated(call.getId(), call.getRemoteVideoState()));
     });
@@ -28,6 +32,7 @@ export default function createKandyInterceptors({apiKey, dispatch, getState}) {
     // are interceptor functions for those actions.
     return Object.assign({},
         createCoreInterceptors({apiKey, dispatch, getState}),
+        createChatInterceptors({apiKey, dispatch, getState}),
         createCallInterceptors({apiKey, dispatch, getState})
     );
 }
