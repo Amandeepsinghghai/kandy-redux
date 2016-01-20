@@ -1,6 +1,6 @@
 import kandy from 'kandy-js';
 import createCallInterceptors from './kandy.call';
-import createChatInterceptors from './kandy.chatMessages';
+import createChatInterceptors from './kandy.messaging';
 import createCoreInterceptors from './kandy.core';
 import {messageReceived, callInitiated, callEnded, callEstablished, mediaError} from '../internalActions';
 
