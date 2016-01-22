@@ -21,6 +21,13 @@ export default {
         };
     },
 
+    sendMessage(fullUserId, message, options){
+        return {
+            type: constants.SEND_MESSAGE,
+            payload: { fullUserId, message, options }
+        };
+    },
+
     makeCall(userName, cameraOn, callerId, options) {
         return {
             type: constants.MAKE_CALL,

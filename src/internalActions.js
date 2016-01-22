@@ -27,6 +27,30 @@ export function loginFailure(username) {
     };
 }
 
+export function sendMessageSuccess(message) {
+    return {
+        type: constants.SEND_MESSAGE_FINISH,
+        payload: {
+            message
+        }
+    };
+}
+
+export function sendMessageFailure() {
+    return {
+        type: constants.SEND_MESSAGE_FINISH,
+        payload: new Error('Message send failed.'),
+        error: true
+    };
+}
+
+export function messageReceived(message) {
+    return {
+        type: constants.MESSAGE_RECEIVED,
+        payload: { message }
+    };
+}
+
 export function callInitiated(callId, remoteVideoState) {
     return {
         type: constants.CALL_INITIATED,
