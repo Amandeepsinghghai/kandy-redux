@@ -1,15 +1,15 @@
 import constants, { mediaErrors } from '../src/constants';
 import callsReducer from '../src/reducers/calls';
-import chatReducer from '../src/reducers/chatMessages';
+import chatsReducer from '../src/reducers/chatMessages';
 import authReducer from '../src/reducers/auth';
 import webRTCReducer from '../src/reducers/webRTC';
 import {makeCall} from '../src/actions';
 
 describe('reducers', function() {
     it('chat reducer default state to be returned', function() {
-        const expectation = [];
+        const expectation = {};
         const state = undefined;
-        const newState = chatReducer(state, {});
+        const newState = chatsReducer(state, {});
 
         expect(newState).to.deep.equal(expectation);
         // Check that state is not mutated
@@ -17,25 +17,25 @@ describe('reducers', function() {
     });
 
     it('chat reducer to add a successfully sent message to state', function() {
-        const message = {UUID: 'foo'};
-        const action = {type: constants.SEND_MESSAGE_FINISH, payload: {message: message}};
-        const expectation = [message];
-        const state = [];
-        const newState = chatReducer(state, action);
+        const message = {destination: 'foo'};
+        const action = {type: constants.SEND_MESSAGE_FINISH, payload: {message}};
+        const expectation = {foo: [{message: {destination: 'foo'}}]};
+        const state = {};
+        const newState = chatsReducer(state, action);
 
-        expect(newState[0]).to.equal(expectation[0]);
+        expect(newState).to.deep.equal(expectation);
         // Check that state is not mutated
         expect(newState).not.to.equal(state);
     });
 
     it('chat reducer to add a received message to state', function() {
-        const message = {UUID: 'foo'};
-        const action = {type: constants.MESSAGE_RECEIVED, payload: {message: message}};
-        const expectation = [message];
-        const state = [];
-        const newState = chatReducer(state, action);
+        const message = {destination: 'foo', sender: {full_user_id: 'bar'}};
+        const action = {type: constants.MESSAGE_RECEIVED, payload: {message}};
+        const expectation = {bar: [{message: {destination: 'foo', sender: {full_user_id: 'bar'}}}]};
+        const state = {};
+        const newState = chatsReducer(state, action);
 
-        expect(newState[0]).to.equal(expectation[0]);
+        expect(newState).to.deep.deep.equal(expectation);
         // Check that state is not mutated
         expect(newState).not.to.equal(state);
     });
