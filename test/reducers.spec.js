@@ -19,7 +19,7 @@ describe('reducers', function() {
     it('chat reducer to add a successfully sent message to state', function() {
         const message = {destination: 'foo'};
         const action = {type: constants.SEND_MESSAGE_FINISH, payload: {message}};
-        const expectation = {foo: [{message: {destination: 'foo'}}]};
+        const expectation = {foo: [ {destination: 'foo'} ] };
         const state = {};
         const newState = chatsReducer(state, action);
 
@@ -31,7 +31,7 @@ describe('reducers', function() {
     it('chat reducer to add a received message to state', function() {
         const message = {destination: 'foo', sender: {full_user_id: 'bar'}};
         const action = {type: constants.MESSAGE_RECEIVED, payload: {message}};
-        const expectation = {bar: [{message: {destination: 'foo', sender: {full_user_id: 'bar'}}}]};
+        const expectation = {bar: [ {destination: 'foo', sender: {full_user_id: 'bar'}} ]};
         const state = {};
         const newState = chatsReducer(state, action);
 

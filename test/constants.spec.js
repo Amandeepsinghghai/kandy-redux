@@ -6,8 +6,10 @@ describe('constants', function() {
         const prefix = '@@kandy-redux/';
 
         _.forEach(constants, (constant) => {
-            var startsWithPrefix = constant.indexOf(prefix) === 0;
-            expect(startsWithPrefix).to.be.true;
+            if(typeof constant === "string") {
+                var startsWithPrefix = constant.indexOf(prefix) === 0;
+                expect(startsWithPrefix).to.be.true;
+            }
         });
     });
 
