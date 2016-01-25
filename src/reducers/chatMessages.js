@@ -7,13 +7,13 @@ const chatReducers = {};
  */
 chatReducers[constants.SEND_MESSAGE_FINISH] = (state = [], action) => {
     return [...state,
-        Object.assign({}, action.payload)
+        Object.assign({}, action.payload.message)
     ];
 };
 
 chatReducers[constants.MESSAGE_RECEIVED] = (state = [], action) => {
     return [...state,
-        Object.assign({}, action.payload)
+        Object.assign({}, action.payload.message)
     ];
 };
 
