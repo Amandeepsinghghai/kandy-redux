@@ -7,7 +7,7 @@ export default function(state={}, action) {
     return {
         auth: auth(state.auth, action),
         calls: calls(state.calls, action),
-        messages: chatMessages(state.messages, action),
+        chatMessages: chatMessages(state.chatMessages, action),
         webRTC: webRTC(state.webRTC, action)
     };
 };
