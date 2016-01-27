@@ -1,20 +1,53 @@
 import constants from './constants';
 
 // These actions should not be dispatched outside of kandy-redux
-export function loginSuccess(username) {
+export function loginSuccess(username, fullUserId = '', isAnonymous = false) {
     return {
         type: constants.LOGIN_FINISH,
         payload: {
-            username
+            username,
+            fullUserId,
+            isAnonymous
         }
     };
 }
 
 export function loginFailure(username) {
+    var errorMsg;
+    if(username) {
+        errorMsg = username + ' was not logged in due to an error.';
+    } else {
+        errorMsg = 'Could not log in due to an error.';
+    }
+
     return {
         type: constants.LOGIN_FINISH,
-        payload: new Error(username + ' was not logged in due to an error.'),
+        payload: new Error(errorMsg),
         error: true
+    };
+}
+
+export function sendMessageSuccess(message) {
+    return {
+        type: constants.SEND_MESSAGE_FINISH,
+        payload: {
+            message
+        }
+    };
+}
+
+export function sendMessageFailure() {
+    return {
+        type: constants.SEND_MESSAGE_FINISH,
+        payload: new Error('Message send failed.'),
+        error: true
+    };
+}
+
+export function messageReceived(message) {
+    return {
+        type: constants.MESSAGE_RECEIVED,
+        payload: { message }
     };
 }
 

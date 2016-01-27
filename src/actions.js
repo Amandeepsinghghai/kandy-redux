@@ -8,9 +8,23 @@ export default {
         };
     },
 
+    loginSSO(userAccessToken) {
+        return {
+            type: constants.LOGIN_SSO,
+            payload: { userAccessToken }
+        };
+    },
+
     logout() {
         return {
             type: constants.LOGOUT
+        };
+    },
+
+    sendMessage(fullUserId, message, options){
+        return {
+            type: constants.SEND_MESSAGE,
+            payload: { fullUserId, message, options }
         };
     },
 

@@ -3,8 +3,12 @@ const prefix = '@@kandy-redux/';
 
 export default {
     LOGIN: prefix + 'login',
+    LOGIN_SSO: prefix + 'login-sso',
     LOGIN_FINISH: prefix + 'login-finish',
     LOGOUT: prefix + 'logout',
+    SEND_MESSAGE: prefix + 'send-message',
+    SEND_MESSAGE_FINISH: prefix + 'send-message-finish',
+    MESSAGE_RECEIVED: prefix + 'message-received',
     MAKE_CALL: prefix + 'make-call',
     CALL_INITIATED: prefix + 'call-initiated',
     END_CALL: prefix + 'end-call',
@@ -16,13 +20,13 @@ export default {
     UNMUTE_CALL: prefix + 'unmute-call',
     INIT_MEDIA: prefix + 'init-media',
     INIT_MEDIA_FINISH: prefix + 'init-media-finish',
-    MEDIA_ERROR: prefix + 'media-error'
-};
+    MEDIA_ERROR: prefix + 'media-error',
 
-/**
- * mediaErrors
- * Use Kandy's constants for the media [error] event.
- * Export as a separate, named export since they are
- * only used for a particular scenario.
- */
-export const mediaErrors = kandy.call.mediaErrors;
+    /**
+     * mediaErrors
+     * Use Kandy's constants for the media [error] event.
+     * Export as a separate, named export since they are
+     * only used for a particular scenario.
+     */
+    mediaErrors: kandy.call.mediaErrors
+};

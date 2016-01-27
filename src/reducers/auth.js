@@ -2,10 +2,27 @@ import {handleActions} from 'redux-actions';
 import constants from '../constants';
 
 const reducers = {};
-reducers[constants.LOGIN_FINISH] = (state, action) => ({
-    currentUsername: action.payload.username,
-    isAuthenticated: true
+reducers[constants.LOGIN] = (state, action) => ({
+    isPending: true
 });
+
+reducers[constants.LOGIN_SSO] = (state, action) => ({
+    isPending: true
+});
+
+reducers[constants.LOGIN_FINISH] = {
+    next(state, action) {
+        return {
+            currentUsername: action.payload.username,
+            fullUserId: action.payload.fullUserId,
+            isAuthenticated: true,
+            isAnonymous: action.payload.isAnonymous
+        };
+    },
+    throw() {
+        return {};
+    }
+};
 
 reducers[constants.LOGOUT] = () => ({
     currentUsername: '',

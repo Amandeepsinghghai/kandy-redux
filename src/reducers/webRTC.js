@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-import constants, { mediaErrors } from '../constants';
+import constants from '../constants';
 
 /**
  * webRTC reducers.
@@ -39,7 +39,7 @@ reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
             callSupport: true,
             screenshareSupport: false,
             error: {
-                type: mediaErrors.NO_SCREENSHARING_WARNING
+                type: constants.mediaErrors.NO_SCREENSHARING_WARNING
             }
         };
     } else {
@@ -59,7 +59,7 @@ reducers[constants.INIT_MEDIA_FINISH] = (state, action) => {
 reducers[constants.MEDIA_ERROR] = (state, action) => {
 
     var canCall = false;
-    if(action.payload.error.type === mediaErrors.NO_SCREENSHARING_WARNING) {
+    if(action.payload.error.type === constants.mediaErrors.NO_SCREENSHARING_WARNING) {
         // This case is just a warning. Calls work; screenshare doesn't.
         canCall = true;
         // This is a hack. See the comment above.
