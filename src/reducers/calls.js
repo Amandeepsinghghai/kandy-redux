@@ -1,5 +1,6 @@
 import {handleActions} from 'redux-actions';
 import constants from '../constants';
+import {updateArrayItem} from '../helpers'
 
 const reducers = {};
 
@@ -32,6 +33,22 @@ reducers[constants.CALL_ENDED] = (state, action) => {
     return state.filter((call) => {
         return call.callId !== action.payload.callId;
     });
+};
+
+reducers[constants.HOLD_CALL] = (state, action) => {
+    return updateArrayItem(state, call => call.callId === action.payload.callId, { isOnHold: true });
+};
+
+reducers[constants.UNHOLD_CALL] = (state, action) => {
+   return updateArrayItem(state, call => call.callId === action.payload.callId, { isOnHold: false });
+};
+
+reducers[constants.MUTE_CALL] = (state, action) => {
+    return updateArrayItem(state, call => call.callId === action.payload.callId, { isMuted: true });
+};
+
+reducers[constants.UNMUTE_CALL] = (state, action) => {
+   return updateArrayItem(state, call => call.callId === action.payload.callId, { isMuted: false });
 };
 
 // This creates a reducer function made up of many reducers.

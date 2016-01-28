@@ -75,6 +75,54 @@ describe('reducers', function() {
         expect(newState).not.to.equal(state);
     });
 
+    it('call reducer to put a call on-hold and return a new state for the call', function() {
+        const call = {callId: 'foo'};
+        const action = {type: constants.HOLD_CALL, payload: call};
+        const expectation = [ {callId: 'foo', isOnHold: true} ];
+        const state = [call];
+        const newState = callsReducer(state, action);
+
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
+    });
+
+    it('call reducer to resume the call and return a new state for the call', function() {
+        const call = {callId: 'foo'};
+        const action = {type: constants.UNHOLD_CALL, payload: call};
+        const expectation = [ {callId: 'foo', isOnHold: false} ];
+        const state = [call];
+        const newState = callsReducer(state, action);
+
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
+    });
+
+    it('call reducer to mute a call and return a new state for the call', function() {
+        const call = {callId: 'foo'};
+        const action = {type: constants.MUTE_CALL, payload: call};
+        const expectation = [ {callId: 'foo', isMuted: true} ];
+        const state = [call];
+        const newState = callsReducer(state, action);
+
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
+    });
+
+    it('call reducer to un-mute a call and return a new state for the call', function() {
+         const call = {callId: 'foo'};
+        const action = {type: constants.UNMUTE_CALL, payload: call};
+        const expectation = [ {callId: 'foo', isMuted: false} ];
+        const state = [call];
+        const newState = callsReducer(state, action);
+
+        expect(newState).to.deep.equal(expectation);
+        // Check that state is not mutated
+        expect(newState).not.to.equal(state);
+    });
+
     it('auth reducer default state to be returned', function() {
         const expectation = {};
         const state = undefined;
